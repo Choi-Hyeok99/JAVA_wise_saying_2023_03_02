@@ -1,4 +1,4 @@
-package com.ll;
+package com.ll.wiseSaying.controller.entity;
 
 public class WiseSaying {
 
