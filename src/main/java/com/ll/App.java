@@ -6,22 +6,18 @@ import java.util.Scanner;
 
 public class App {
 
-    private final Scanner scanner;
 
-    public App(Scanner scanner) {
-        this.scanner = scanner;
-    }
         public void run () {
 
             System.out.println("== 명언 앱 ==");
 
             SystemController systemController = new SystemController();
-            WiseSayingController wiseSayingController = new WiseSayingController(scanner);
+            WiseSayingController wiseSayingController = new WiseSayingController();
             while (true){
 
             System.out.print("명령) ");
             // trim() : 혹시 있을지 모를 좌우공백 제거된 버전으로 주세요
-            String command = scanner.nextLine().trim();
+            String command = Container.getScanner().nextLine().trim();
 
             if(command.equals("종료")) {
                 systemController.exit();
