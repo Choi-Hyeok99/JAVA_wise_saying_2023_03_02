@@ -14,7 +14,12 @@ public class App {
         public void run () {
 
             System.out.println("== 명언 앱 ==");
-        while (true){
+
+            long lastWiseSayingId = 1;
+
+
+            while (true){
+
             System.out.print("명령) ");
             // trim() : 혹시 있을지 모를 좌우공백 제거된 버전으로 주세요
             String command = scanner.nextLine().trim();
@@ -27,8 +32,11 @@ public class App {
                 System.out.print("작가) ");
                 String authorName = scanner.nextLine().trim();
 
-                System.out.println("1번 명언이 등록되었습니다.");
+
+
+                System.out.printf(" %d번 명언이 등록되었습니다.\n", lastWiseSayingId);
             }
+            lastWiseSayingId++;
             }
         }
     }
