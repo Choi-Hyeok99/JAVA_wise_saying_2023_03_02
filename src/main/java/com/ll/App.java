@@ -1,9 +1,7 @@
 package com.ll;
 
-import com.ll.wiseSaying.controller.entity.WiseSaying;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.ll.system.controller.SystemController;
+import com.ll.wiseSaying.controller.WiseSayingController;
 import java.util.Scanner;
 
 public class App {
@@ -13,15 +11,12 @@ public class App {
     public App(Scanner scanner) {
         this.scanner = scanner;
     }
-
-
         public void run () {
 
             System.out.println("== 명언 앱 ==");
 
-            long lastWiseSayingId = 0;
-            List<WiseSaying> wiseSayings = new ArrayList<>();
-
+            SystemController systemController = new SystemController();
+            WiseSayingController wiseSayingController = new WiseSayingController(scanner);
             while (true){
 
             System.out.print("명령) ");
@@ -29,32 +24,14 @@ public class App {
             String command = scanner.nextLine().trim();
 
             if(command.equals("종료")) {
+                systemController.exit();
+
                 break;
                 } else if(command.equals("등록")){
+                wiseSayingController.write();
 
-                long id = lastWiseSayingId +1;
-                System.out.print("명언) ");
-                String content = scanner.nextLine().trim();
-                System.out.print("작가) ");
-                String authorName = scanner.nextLine().trim();
-
-
-                WiseSaying wiseSaying = new WiseSaying(id, content, authorName);
-                wiseSayings.add(wiseSaying);
-
-
-                System.out.printf(" %d번 명언이 등록되었습니다.\n", id);
-                lastWiseSayingId = id; // 증가
             }   else if (command.equals("목록")) {
-                System.out.println("번호 / 작가 / 명언 ");
-                System.out.print("-".repeat(30));
-
-                for (int i = wiseSayings.size() -1; i>=0;  i--){
-                    WiseSaying wiseSaying = wiseSayings.get(i);
-
-                    System.out.printf("%d / %s / %s \n",wiseSaying.getId(),wiseSaying.getAuthorName(),wiseSaying.getContent());
-                }
-
+                wiseSayingController.list();
             }
         }
     }
