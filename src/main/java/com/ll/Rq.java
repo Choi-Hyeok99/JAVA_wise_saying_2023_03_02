@@ -24,7 +24,7 @@ public class Rq {
             String[] paramStrBits = paramStr.split("=",2);
             String key = paramStrBits[0];
 
-            if (paramsBits.length ==1 ) continue;
+            if (paramsBits.length == 1 ) continue;
 
             String value = paramStrBits[1];
 
@@ -40,4 +40,16 @@ public class Rq {
         return params.get(name);
 
     }
-}
+
+
+    public int getIntParam(String name, int defaultValue) {
+        try {
+            return Integer.parseInt(getParam(name));
+        } catch (NumberFormatException e) {
+
+        }
+
+        return defaultValue;
+        }
+    }
+
