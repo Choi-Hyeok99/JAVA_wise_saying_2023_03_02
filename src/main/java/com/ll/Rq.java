@@ -16,13 +16,16 @@ public class Rq {
 
         params = new HashMap<>();
 
-        if( commandBits.length ==1) return;
+        if( commandBits.length == 1) return;
 
         String[] paramsBits = commandBits[1].split("&");
 
         for (String paramStr : paramsBits){
             String[] paramStrBits = paramStr.split("=",2);
             String key = paramStrBits[0];
+
+            if (paramsBits.length ==1 ) continue;
+
             String value = paramStrBits[1];
 
             params.put(key, value);
