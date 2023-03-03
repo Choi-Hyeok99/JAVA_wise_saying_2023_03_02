@@ -2,6 +2,10 @@ package com.ll;
 
 import com.ll.system.controller.SystemController;
 import com.ll.wiseSaying.controller.WiseSayingController;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
@@ -21,13 +25,30 @@ public class App {
 
             if(command.equals("종료")) {
                 systemController.exit();
-
                 break;
-                } else if(command.equals("등록")){
-                wiseSayingController.write();
-
-            }   else if (command.equals("목록")) {
+            } else if(command.equals("등록"))
+                {wiseSayingController.write();}
+              else if (command.equals("목록")) {
                 wiseSayingController.list();
+            } else if (command.startsWith("삭제")){
+                  // 정리 시작
+                  String[] commandBits = command.split("\\?",2);  // ? 기준으로 나눈다   최대 2까지
+                  String actionCode = commandBits[0];
+                  Map<String, String> params = new HashMap<>();
+                  String[] paramsBits = commandBits[1].split("&");
+
+                  for (String paramStr : paramsBits){
+                      String[] paramStrBits = paramStr.split("=",2);
+                      String key = paramStrBits[0];
+                      String value = paramStrBits[1];
+
+                      params.put(key, value);
+                  }
+                  System.out.printf("actionCode: %s\n", actionCode);
+                  System.out.printf("params : %s\n", params);
+
+                  // 정리 끝
+                  wiseSayingController.remove();
             }
         }
     }
