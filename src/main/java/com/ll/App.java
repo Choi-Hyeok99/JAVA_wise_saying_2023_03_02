@@ -3,11 +3,6 @@ package com.ll;
 import com.ll.system.controller.SystemController;
 import com.ll.wiseSaying.controller.WiseSayingController;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class App {
         public void run () {
 
