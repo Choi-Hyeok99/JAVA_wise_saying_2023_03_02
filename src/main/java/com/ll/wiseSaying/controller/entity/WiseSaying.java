@@ -12,16 +12,17 @@ public class WiseSaying {
         this.authorName = authorName;
     }
 
-    public long getId() {
-        return id;
+    public long getId() {return id;}
+
+    public String getContent() {return content;}
+
+    public String getAuthorName() {return authorName;}
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getContent() {
-        return content;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
-
-    public String getAuthorName() {
-        return authorName;
-    }
-
 }
